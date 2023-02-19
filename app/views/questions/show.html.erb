@@ -1,0 +1,30 @@
+<% provide :page_title, 'Question' %>
+<% currently_at 'Questions' %>
+
+<h1 class="mb-4"><%= @question.title %></h1>
+
+<time datetime="<%= @question.formatted_created_at %>">
+	<%= @question.formatted_created_at %>		
+</time>
+
+<p class="lead my-3">
+	<%= sanitize @question.body %>
+</p>
+
+<%= link_to 'Show', question_path(@question), class: 'btn btn-primary' %> 
+<%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-secondary' %> 
+<%= button_to 'Delete', question_path(@question), method: :delete, onclick: "return confirm('Are you sure?')", class: 'btn btn-danger mt-3' %>
+
+<hr class="my-3">
+
+<h2>Write your answer</h2>
+
+<%= render 'answers/form' %>
+
+<h2 class="mt-4">Answers</h2>
+
+<!-- рендерим паршл, рендерим именно коллекцию @answers, т.е. рендерим поочереди, дальше говорим, как называются элементы коллекции 
+ и в локальную переменную question передаем значение глобальной переменной -->
+<%= render partial: 'answers/answer', collection: @answers, as: :answer, locals: {question: @question} %>
+
+<%== pagination @pagy %>
