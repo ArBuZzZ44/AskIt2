@@ -15,10 +15,10 @@
 
               <ul class="dropdown-menu">
                 <li>
-                  <%= link_to 'Log Out', session_path, class: 'dropdown-item',  method: :delete, data: {confirm: 'Are you sure?' } %>
+                  <%= link_to 'Edit profile', edit_user_path(current_user), class: 'dropdown-item' %>
                 </li>
                 <li>
-                  <%= link_to 'Edit profile', edit_user_path(current_user), class: 'dropdown-item' %>
+                  <%= link_to 'Log Out', session_path, class: 'dropdown-item',  method: :delete, data: {confirm: 'Are you sure?' } %>
                 </li>
               </ul>
             </li>
