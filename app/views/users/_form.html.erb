@@ -40,6 +40,6 @@
 			<%= f.password_field :password_confirmation, class: 'form-control form-control-lg' %>
 		</div>
 	</div>
-
-	<%= f.submit "Register!", class: 'btn btn-primary btn-lg' %>
+	<!-- если объект юзера не сохранен в бд, а присутствует только в памяти, то "register", иначе "save" -->
+	<%= f.submit (@user.new_record? ? "Register!" : "Save"), class: 'btn btn-primary btn-lg' %>
 <% end %>
