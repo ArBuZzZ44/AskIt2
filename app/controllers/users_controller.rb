@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_no_authentication
+  before_action :require_no_authentication, only: %i[new create]
+  before_action :require_authentication, only: %i[edit update]
   
   def new
     @user = User.new
@@ -14,6 +15,14 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+    
   end
 
   private
