@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :old_password # создает виртуальный атрибут, который нужен для создания поля в форме и проверки пароля
+  attr_accessor :old_password, :remember_token # создает виртуальный атрибут, который нужен для создания поля в форме и проверки пароля
 
   has_secure_password  validations: false # создает виртуальный атрибут password и password_confirmation. Они не попадают в бд, в бд идет только хеш пароля в password_digest
 
@@ -11,7 +11,32 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validate :password_complexity
 
+  def remember_me 
+    # генерируется сам токен, на основе которого делается хеш
+    self.remember_token = SecureRandom.urlsafe_base64 
+    # токен помещаем в таблицу
+    update_column :remember_token_digest, digest(remember_token)
+  end
+
+  def forget_me
+    update_column :remember_token_digest, nil # очищем поле при выходе пользователя из системы
+    self.remember_token = nil
+  end
+
+  def remember_token_authenticated?(remebmer_token)
+    return false unless remember_token_digest.present? # если этого digest здесь нет, сразу возвращает false без проверки
+    # для проверки токена, который передается и токена, который есть в бд
+    BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
+  end
+
+
   private
+
+   def digest(string) # генерируется хеш на основе строки
+    cost = ActiveModel::SecurePassword.
+      min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
   def correct_old_password
     # password_digest_was берет иммено старый password_digest_was и сравнивает с password_digest на основе old_password

@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     # добавляем амперсант, если user будет nil, то данное условие сразу обратиться в ложное и мы уйдем в ветку else
     if user&.authenticate(params[:password]) # метод authenticate добавляется благодаря has_secure_password в моделт User. принимает строку, конвертирует ее в хеш и сравнивает с хешем в бд
       sign_in user
+      remember(user) if params[:remember_me] == '1'
       flash[:success] = "Welcome back, #{current_user.name_or_email}!"
       redirect_to root_path
     else

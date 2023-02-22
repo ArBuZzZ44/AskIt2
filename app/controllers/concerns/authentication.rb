@@ -6,7 +6,15 @@ module Authentication
   private
   
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id]).decorate if session[:user_id].present? # задекорировали, теперь метод можем использовать
+    if session[:user_id].present?
+      @current_user ||= User.find_by(id: session[:user_id]).decorate # задекорировали, теперь метод можем использовать
+    elsif cookies.encrypted[:user_id].present? # если в сессии ничего нет, проверяем не запоминали ли мы этого юзера раньше
+      user = User.find_by(id: cookies.encrypted[:user_id])
+      if user&.remember_token_authenticated?(cookies.encrypted[:remember_token])
+        sign_in user
+        @current_user ||= user.decorate
+      end
+    end
   end
 
   def user_signed_in?
@@ -31,7 +39,22 @@ module Authentication
     session[:user_id] = user.id
   end
 
+
+  def remember(user) # метод из модели User
+    user.remember_me
+    # encrypted для шифрования куки, permanent для долгого запоминания
+    cookies.encrypted.permanent[:remember_token] = user.remember_token
+    cookies.encrypted.permanent[:user_id] = user.id
+  end
+
+  def forget(user)
+    user.forget_me 
+    cookies.delete :user_id # удаляем значения из куки
+    cookies.delete :remember_token
+  end
+
   def sign_out
+    forget current_user
     session.delete :user_id
   end
 
