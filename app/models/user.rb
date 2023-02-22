@@ -4,11 +4,11 @@ class User < ApplicationRecord
   has_secure_password  validations: false # создает виртуальный атрибут password и password_confirmation. Они не попадают в бд, в бд идет только хеш пароля в password_digest
 
   validate :password_presence
-  validate :correct_old_password, on: :update # только при обновлении
+  validate :correct_old_password, on: :update, if: -> {password.present?} # только при обновлении и вводе нового пароля
   validates :password, confirmation: true, allow_blank: true, # password должен совпадать с password_confirmation, allow_blank в данном случае означает, что при обновлении учетной записи юзер может оставить его пустым
     length: {minimum: 8, maximum: 70} 
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validate :password_complexity
 
   private
