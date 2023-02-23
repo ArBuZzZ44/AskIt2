@@ -23,7 +23,7 @@ class User < ApplicationRecord
     self.remember_token = nil
   end
 
-  def remember_token_authenticated?(remebmer_token)
+  def remember_token_authenticated?(remember_token)
     return false unless remember_token_digest.present? # если этого digest здесь нет, сразу возвращает false без проверки
     # для проверки токена, который передается и токена, который есть в бд
     BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
