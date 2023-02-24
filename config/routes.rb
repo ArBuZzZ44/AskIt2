@@ -10,5 +10,10 @@ Rails.application.routes.draw do
     resources :answers, except: %i[new show] # except - кроме, т.е. исключаем ненужные маршруты
   end
 
+  # создаем пространство имен для admin и маршрут для этого имени
+  namespace :admin do
+    resources :users, only: %i[index]
+  end
+
   root 'pages#index'
 end
