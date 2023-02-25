@@ -1,7 +1,7 @@
 class UserBulkService < ApplicationService
   attr_reader :archive
 
-  def initialize(archive_param)
+  def initialize archive_param
     # tempfile позволяет получать ссылку на загружаемый файл
     @archive = archive_param.tempfile
   end
@@ -22,9 +22,10 @@ class UserBulkService < ApplicationService
     sheet = RubyXL::Parser.parse_buffer(entry.get_input_stream.read)[0]
     sheet.map do |row|
       cells = row.cells
-      User.new name: cellls[0].value,
-                      email: cells[2].value
+      User.new name: cells[0].value,
+                      email: cells[2].value,
                       password: cells[2].value,
                       password_confirmation: cells[2].value
+    end
   end
 end
