@@ -9,9 +9,7 @@ class Admin::UsersController < ApplicationController
         @pagy, @users = pagy User.order(created_at: :desc)
       end
 
-      format.zip do 
-        respond_with_zipped_users
-      end
+      format.zip {respond_with_zipped_users}
     end
   end
 
@@ -28,7 +26,7 @@ class Admin::UsersController < ApplicationController
         zos.print render_to_string( # генерируем строку в память и затем записываем в файл
           layout: false,
           handlers: [:axlsx], # обработчик шаблонов
-          format: [:xlsx], # формат
+          formats: [:xlsx], # формат
           template: 'admin/users/user', # указываем шаблон, который хотим рендерить
           locals: {user: user} # передаем представлению локальную переменную из теущего юзера
         )
