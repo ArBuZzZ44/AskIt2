@@ -32,6 +32,10 @@ gem 'draper'
 
 gem 'valid_email2', '~> 4.0'
 
+gem 'rubyzip', '~> 2'
+
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

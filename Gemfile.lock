@@ -197,6 +197,7 @@ GEM
       rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -243,6 +244,7 @@ DEPENDENCIES
   rubocop (~> 1.18)
   rubocop-performance (~> 1.11)
   rubocop-rails (~> 2.11)
+  rubyzip (~> 2)
   sprockets-rails
   sqlite3 (~> 1.4)
   tzinfo-data
