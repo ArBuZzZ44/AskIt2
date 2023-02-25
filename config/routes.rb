@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   # создаем пространство имен для admin и маршрут для этого имени
   namespace :admin do
-    resources :users, only: %i[index]
+    resources :users, only: %i[index, create]
   end
 
   root 'pages#index'
