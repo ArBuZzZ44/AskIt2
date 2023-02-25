@@ -40,6 +40,8 @@ gem 'caxlsx_rails', '~> 0.6' # позволяет правильно работ�
 
 gem 'rubyXL', '~> 3.4'
 
+gem 'pry-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
