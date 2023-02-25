@@ -38,6 +38,8 @@ gem 'caxlsx', '~> 3.1' # позволяет записывать файлы xl
 
 gem 'caxlsx_rails', '~> 0.6' # позволяет правильно работать с представлениями
 
+gem 'rubyXL', '~> 3.4'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
