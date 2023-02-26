@@ -42,6 +42,8 @@ gem 'rubyXL', '~> 3.4'
 
 gem 'pry-rails'
 
+gem 'activerecord-import', '~> 1.2'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
