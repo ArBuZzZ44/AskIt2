@@ -9,8 +9,7 @@ class UserBulkService < ApplicationService
   def call
     Zip::File.open(@archive) do |zip_file|
       zip_file.each do |entry| # берет каждый файл, который находится внутри архива
-        u = users_from(entry)
-        binding.pry
+        User.import users_from(entry), ignore: true # передаем массив из пользователей и игнорируем дубли. делает все с валидацией
       end
     end
   end
@@ -23,7 +22,7 @@ class UserBulkService < ApplicationService
     sheet.map do |row|
       cells = row.cells
       User.new name: cells[0].value,
-                      email: cells[2].value,
+                      email: cells[1].value,
                       password: cells[2].value,
                       password_confirmation: cells[2].value
     end
