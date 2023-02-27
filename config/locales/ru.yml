@@ -1,4 +1,9 @@
 ru:
+  activerecord:
+    attributes:
+      question:
+        title: "Заголовок"
+        body: "Текст"
   pages:
     index:
       title: "Добро пожаловать в AskIt!"
