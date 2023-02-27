@@ -9,3 +9,6 @@ en:
       title: "Welcome to AskIt!"
   menu:
     home: "Home"
+  questions:
+    destroy:
+      success: "Question deleted!"
