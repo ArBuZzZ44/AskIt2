@@ -44,6 +44,8 @@ gem 'pry-rails'
 
 gem 'activerecord-import', '~> 1.2'
 
+gem 'rails-i18n', '~> 7'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
