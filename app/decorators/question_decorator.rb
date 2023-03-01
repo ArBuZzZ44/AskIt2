@@ -2,6 +2,8 @@
 
 class QuestionDecorator < ApplicationDecorator
   delegate_all
+  # чтобы автоматически декорировалась ассоциация, которую мы применяем к этому объекту
+  decorates_association :user
 
   # l - localize, берется из стандартного перевода i18n
   def formatted_created_at
