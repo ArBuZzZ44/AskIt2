@@ -8,6 +8,9 @@ class User < ApplicationRecord
   # Они не попадают в бд, в бд идет только хеш пароля в password_digest
   has_secure_password validations: false
 
+  has_many :questions, dependent: :destroy
+  has_many :answers, dependent: :destroy
+
   validate :password_presence
   validate :correct_old_password, on: :update, if: lambda {
                                                      password.present?
