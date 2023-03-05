@@ -13,11 +13,8 @@ class UserDecorator < ApplicationDecorator
   end
 
   def gravatar(size: 30, css_class: '')
-    # генерируем хеш на основе email пользователя
-    email_hash = Digest::MD5.hexdigest email.strip.downcase
-
     # генерируем адрес изображения, h означает, что используем хелпер rails
-    h.image_tag "https://www.gravatar.com/avatar/#{email_hash}.jpg?s=#{size}",
+    h.image_tag "https://www.gravatar.com/avatar/#{gravatar_hash}.jpg?s=#{size}",
                 class: "rounded #{css_class}", alt: name_or_email
   end
 end
