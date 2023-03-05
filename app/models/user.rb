@@ -22,6 +22,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validate :password_complexity
 
+  # функция обратного вызова, выполняется перед сохранением записи в бд
+  before_save :set_gravatar_hash, if: :email_changed? # email_changed? - метод RoR
+
   def remember_me
     # генерируется сам токен, на основе которого делается хеш
     self.remember_token = SecureRandom.urlsafe_base64
@@ -47,6 +50,14 @@ class User < ApplicationRecord
 
 
   private
+
+  def set_gravatar_hash
+    return unless email.present?
+
+    # генерируем хеш на основе email пользователя
+    hash = Digest::MD5.hexdigest email.strip.downcase
+    self.gravatar_hash = hash
+  end
 
   # генерируется хеш на основе строки
   def digest(string)
