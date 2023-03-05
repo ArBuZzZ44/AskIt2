@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   def edit; end
 
   def create
-    @answer = @question.answers.build answer_params
+    @answer = @question.answers.build answer_create_params
 
     if @answer.save
       flash[:success] = 'Answer created!'
@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
   end
 
   def update
-    if @answer.update answer_params
+    if @answer.update answer_update_params
       flash[:success] = 'Answer updated!'
       # при обновлении ответа показывает нам обновленный ответ
       redirect_to question_path(@question, anchor: dom_id(@answer))
@@ -45,7 +45,12 @@ class AnswersController < ApplicationController
     @question = Question.find params[:question_id]
   end
 
-  def answer_params
+  def answer_create_params
+    params.require(:answer).permit(:body).merge(user: current_user)
+  end
+
+  # разделили метод, чтобы при обновлении ответа не переписывался чужой ответ
+  def answer_update_params
     params.require(:answer).permit(:body)
   end
 
