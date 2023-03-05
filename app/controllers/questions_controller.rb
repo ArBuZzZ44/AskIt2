@@ -23,7 +23,8 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def create
-    @question = Question.new question_params
+    # привязка созданного вопроса к определенному пользователю
+    @question = current_user.questions.build question_params
     if @question.save
       flash[:success] = 'Question created!'
       redirect_to questions_path
