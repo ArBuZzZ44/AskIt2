@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AnswersController < ApplicationController
+  include QuestionsAnswers
   include ActionView::RecordIdentifier
 
   # порядок этих before важен, т.к. сначала нужно найти вопрос, а потом на основе вопроса ответ
@@ -16,10 +17,7 @@ class AnswersController < ApplicationController
       flash[:success] = 'Answer created!'
       redirect_to question_path(@question)
     else
-      @question = @question.decorate
-      @pagy, @answers = pagy @question.answers.order(created_at: :desc)
-      @answers = @answers.decorate
-      render 'questions/show'
+      load_question_answers(do_render: true)
     end
   end
 
@@ -49,7 +47,7 @@ class AnswersController < ApplicationController
     params.require(:answer).permit(:body).merge(user: current_user)
   end
 
-  # разделили метод, чтобы при обновлении ответа не переписывался чужой ответ
+  # разделили метод, чтобы при обновлении ответа чужого ответа он не переписывался на другого юзера
   def answer_update_params
     params.require(:answer).permit(:body)
   end
