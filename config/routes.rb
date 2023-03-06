@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :users, only: %i[new create edit update]
 
     resources :questions do
+      resources :comments, only: %i[create destroy]
+
       resources :answers, except: %i[new show] # except - кроме, т.е. исключаем ненужные маршруты
+    end
+
+    resources :answers, except: %i[new show] do
+      resources :comments, only: %i[create destroy]
     end
 
     # создаем пространство имен для admin и маршрут для этого имени
