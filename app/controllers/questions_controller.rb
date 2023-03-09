@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
   def index
     # метод pagy возвращает массив из двух элементов. передаем объект, который хотим разбить по страницам
-    @pagy, @questions = pagy Question.order(created_at: :desc)
+    @pagy, @questions = pagy Question.includes([:user]).order(created_at: :desc)
     @questions = @questions.decorate
   end
 
