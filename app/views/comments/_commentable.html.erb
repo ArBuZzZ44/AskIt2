@@ -1,10 +1,14 @@
+<% is_current_comment = comment&.for?(commentable) %>
+
 <%= link_to 'Comments', "##{html_id}",
 	class: 'btn btn-primary', data: {'bs-toggle': 'collapse'} %>
 
-<%= tag.div class: 'collapse', id: html_id do %>
-	<%= form_with model: [commentable, (@comment || commentable.comments.build)],
+<%= tag.div class: "collapse #{'show' if is_current_comment}", id: html_id do %>
+	<%= form_with model: [commentable, (is_current_comment ? comment : commentable.comments.build)],
 	class: 'pt-3 border-top my-2' do |f| %>
-		<%= render 'shared/errors', object: @comment %>
+		<% if is_current_comment %>
+			<%= render 'shared/errors', object: @comment %>
+		<% end %>
 
 		<div class="mb-3 row">
 			<div class="col-sm-2 col-form-label">
