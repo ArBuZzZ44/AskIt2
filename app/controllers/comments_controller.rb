@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   include QuestionsAnswers
   before_action :set_commentable!
@@ -7,18 +9,18 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build comment_params
 
     if @comment.save
-      flash[:success] = "Comment created"
+      flash[:success] = 'Comment created'
       redirect_to question_path(@question)
     else
-      @comment = @comment.decorate 
+      @comment = @comment.decorate
       load_question_answers do_render: true
     end
   end
 
-  def destroy 
+  def destroy
     comment = @commentable.comments.find params[:id]
     comment.destroy
-    flash[:success] = "Comment deleted!"
+    flash[:success] = 'Comment deleted!'
     redirect_to question_path(@question)
   end
 
@@ -29,7 +31,7 @@ class CommentsController < ApplicationController
   end
 
   def set_commentable!
-    klass = [Question, Answer].detect {|c| params["#{c.name.underscore}_id"]}
+    klass = [Question, Answer].detect { |c| params["#{c.name.underscore}_id"] }
     raise ActiveRecord::RecordNotFound if klass.blank?
 
     @commentable = klass.find(params["#{klass.name.underscore}_id"])

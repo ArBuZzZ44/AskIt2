@@ -9,10 +9,10 @@ module Internationalization
 
     private
 
-    def switch_locale(&action)
+    def switch_locale(&)
       locale = locale_from_url || locale_from_headers || I18n.default_locale
       response.set_header 'Content-Language', locale
-      I18n.with_locale locale, &action
+      I18n.with_locale(locale, &)
     end
 
     # Adapted from https://github.com/rack/rack-contrib/blob/master/lib/rack/contrib/locale.rb

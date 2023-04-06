@@ -2,8 +2,8 @@
 
 Rails.application.routes.draw do
   # скобки чтобы можно было в маршрут передавать локаль либо не передавать
-  # локали передаем из конфига с помощью регулярного выражения 
-  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+  # локали передаем из конфига с помощью регулярного выражения
+  scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     # для входа в пользователя в систему, destroy, чтобы пользователь мог выходить
     resource :session, only: %i[new create destroy]
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveDefaultUserIfFromQuestionsAnswers < ActiveRecord::Migration[7.0]
   # применяется при применении миграции
   def up
