@@ -50,7 +50,8 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:title, :body)
+    # запись для tag_ids означает, что для данной позиции идет целый массив из id и каждый id представляет собой тэг
+    params.require(:question).permit(:title, :body, tag_ids: [])
   end
 
   def set_question!
