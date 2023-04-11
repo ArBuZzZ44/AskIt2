@@ -13,11 +13,11 @@ Rails.application.routes.draw do
 
     resources :users, only: %i[new create edit update]
 
-    resources :questions, concern :commentable do
+    resources :questions, concern: :commentable do
       resources :answers, except: %i[new show] # except - кроме, т.е. исключаем ненужные маршруты
     end
 
-    resources :answers, except: %i[new show], concern :commentable
+    resources :answers, except: %i[new show], concern: :commentable
 
     # создаем пространство имен для admin и маршрут для этого имени
     namespace :admin do
