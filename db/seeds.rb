@@ -14,7 +14,13 @@
 # end
 
 # с помощью send можно вызывать приватные методы
-User.find_each do |u|
-  u.send(:set_gravatar_hash)
-  u.save
+# User.find_each do |u|
+#   u.send(:set_gravatar_hash)
+#   u.save
+# end
+
+30.times do
+  title = Faker::Hipster.word
+  Tag.create title: title
 end
+
