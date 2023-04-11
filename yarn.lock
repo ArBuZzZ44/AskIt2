@@ -812,6 +812,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jquery@npm:^3.6.4":
+  version: 3.6.4
+  resolution: "jquery@npm:3.6.4"
+  checksum: 8354f7bd0a0424aa714ee1b6b1ef74b410f834eb5c8501682289b358bc151f11677f11188b544f3bb49309d6ec4d15d1a5de175661250c206b06185a252f706f
+  languageName: node
+  linkType: hard
+
 "lru-cache@npm:^6.0.0":
   version: 6.0.0
   resolution: "lru-cache@npm:6.0.0"
@@ -1123,7 +1130,9 @@ __metadata:
     bootstrap: ^5.2.3
     bootstrap-icons: ^1.10.3
     esbuild: ^0.17.7
+    jquery: ^3.6.4
     sass: ^1.58.0
+    select2: ^4.1.0-rc.0
   languageName: unknown
   linkType: soft
 
@@ -1151,6 +1160,13 @@ __metadata:
   bin:
     sass: sass.js
   checksum: a7219634881d2de6441fb619787fb1a02e3fa0333fb715be26aa335ba49d6bdb4f1105d9df70a80a67200893022b08346745783dc49046095d94fc6e044492d6
+  languageName: node
+  linkType: hard
+
+"select2@npm:^4.1.0-rc.0":
+  version: 4.1.0-rc.0
+  resolution: "select2@npm:4.1.0-rc.0"
+  checksum: c27cefc3967d2082b2887869e8379f6e8e0ec2e02a268b7abbaec87fbda20abe4d62ac008b87a14f17bfa46dd27aa0b33ee793ed30142e3bc30ba408e208ad20
   languageName: node
   linkType: hard
 
