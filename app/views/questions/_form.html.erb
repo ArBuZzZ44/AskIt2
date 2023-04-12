@@ -28,7 +28,8 @@
 
 		<div class="col-sm-10">
 			<!-- указываем multiple т.к. отображаем много тэгов сразу -->
-			<%= f.collection_select :tag_ids, tags, :id, :title, {}, multiple: true %>
+			<%= f.collection_select :tag_ids, tags, :id, :title, {}, multiple: true,
+				class: 'js-multiple-select' %>
 		</div>
 	</div>
 
