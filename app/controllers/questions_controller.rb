@@ -3,13 +3,11 @@
 class QuestionsController < ApplicationController
   include QuestionsAnswers
   before_action :set_question!, only: %i[show destroy edit update]
-  before_action :fetch_tags, only: %i[new edit]
 
   def index
     # метод pagy возвращает массив из двух элементов. передаем объект, который хотим разбить по страницам
     @pagy, @questions = pagy Question.all_by_tags(params[:tag_ids])
     @questions = @questions.decorate
-    @tags = Tag.all
   end
 
   def show
@@ -57,9 +55,5 @@ class QuestionsController < ApplicationController
 
   def set_question!
     @question = Question.find params[:id]
-  end
-
-  def fetch_tags
-    @tags = Tag.all 
   end
 end
