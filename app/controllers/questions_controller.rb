@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
     # метод pagy возвращает массив из двух элементов. передаем объект, который хотим разбить по страницам
     @pagy, @questions = pagy Question.all_by_tags(params[:tag_ids])
     @questions = @questions.decorate
+    @tags = Tag.all
   end
 
   def show
