@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy]
   end
 
+  namespace :api do 
+    resources :tags, only: :index
+  end
+
   # скобки чтобы можно было в маршрут передавать локаль либо не передавать
   # локали передаем из конфига с помощью регулярного выражения
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
