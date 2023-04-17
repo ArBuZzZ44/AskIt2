@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_11_203202) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_17_163334) do
   create_table "answers", force: :cascade do |t|
     t.text "body", null: false
     t.integer "question_id", null: false
@@ -65,6 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_11_203202) do
     t.datetime "updated_at", null: false
     t.string "remember_token_digest"
     t.string "gravatar_hash"
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
