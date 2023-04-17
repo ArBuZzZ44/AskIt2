@@ -5,9 +5,8 @@ module Api
       # обозначает, что хочу найти заголовок, в котором содержится слово в парамс
       @tags = Tag.where(tags[:title].matches("%#{params[:term]}%"))
 
-      respond_to do |format|
-        format.json
-      end
+      # render выполнит сериализацию и превратит коллекцию тэгов в json
+     render json: TagBlueprint.render(@tags)
     end
   end
 end
