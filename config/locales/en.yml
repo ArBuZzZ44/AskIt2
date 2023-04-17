@@ -14,3 +14,9 @@ en:
   questions:
     destroy:
       success: "Question deleted!"
+  global:
+    user:
+      roles:
+        basic: "Basic"
+        moderator: "Moderator"
+        admin: "Admin"

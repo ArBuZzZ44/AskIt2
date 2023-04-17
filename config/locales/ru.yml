@@ -14,3 +14,9 @@ ru:
   questions:
     destroy:
       success: "Вопрос удален!"
+  global:
+    user:
+      roles:
+        basic: "Базовый"
+        moderator: "Модератор"
+        admin: "Админ"
