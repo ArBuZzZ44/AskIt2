@@ -5,6 +5,7 @@ module Admin
     # прописываем отдельно всю администраторскую логику
 
     before_action :require_authentication
+    before_action :set_user!, only: %i[edit update destroy]
 
     def index
       respond_to do |format| # показываем приложению как отвечать на разные форматы
@@ -22,6 +23,24 @@ module Admin
         flash[:success] = 'Users imported!'
       end
 
+      redirect_to admin_users_path
+    end
+
+    def edit
+    end
+
+    def update
+      if @user.update user_params
+        flash[:success] = "User updated"
+        redirect_to admin_users_path
+      else
+        render :edit
+      end
+    end
+
+    def destroy
+      @user.destroy
+      flash[:success] = "User deleted!"
       redirect_to admin_users_path
     end
 
@@ -47,6 +66,16 @@ module Admin
 
       compressed_filestream.rewind # "перематыаем" наш метод
       send_data compressed_filestream.read, filename: 'users.zip'
+    end
+
+    def set_user!
+      @user = User.find params[:id]
+    end
+
+    def user_params
+      params.require(:user).permit(
+        :email, :name, :password, :password_confirmation, :role
+        ).merge(admin_edit: true)
     end
   end
 end

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   enum role: { basic: 0, moderator: 1, admin: 2 }, _suffix: :role
 
   # создает виртуальный атрибут, который нужен для создания поля в форме и проверки пароля
-  attr_accessor :old_password, :remember_token
+  attr_accessor :old_password, :remember_token, :admin_edit
 
   # создает виртуальный атрибут password и password_confirmation.
   # Они не попадают в бд, в бд идет только хеш пароля в password_digest
@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   validate :password_presence
   validate :correct_old_password, on: :update, if: lambda {
-                                                     password.present?
+                                                     password.present? && !admin_edit
                                                    } # только при обновлении и вводе нового пароля
   validates :password, confirmation: true, allow_blank: true, # password должен совпадать с password_confirmation,
                        length: { minimum: 8, maximum: 70 }
