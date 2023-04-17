@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
   validate :password_complexity
+  validates :role, presence: true
 
   # функция обратного вызова, выполняется перед сохранением записи в бд
   before_save :set_gravatar_hash, if: :email_changed? # email_changed? - метод RoR
