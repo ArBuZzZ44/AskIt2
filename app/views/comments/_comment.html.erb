@@ -12,10 +12,12 @@
               <%= sanitize comment.body %>
             </p>
 
-            <!-- polymprphic_path строит путь, выбирая между question и answer -->
-            <%= link_to 'Delete', polymorphic_path([comment.commentable, comment]),
-                class: 'btn btn-danger btn-sm',
-                method: :delete, data: {confirm: 'Are you sure?' } %>
+            <% if policy(comment).destroy? %>
+              <!-- polymprphic_path строит путь, выбирая между question и answer -->
+              <%= link_to 'Delete', polymorphic_path([comment.commentable, comment]),
+                  class: 'btn btn-danger btn-sm',
+                  method: :delete, data: {confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </section>
       </div>
