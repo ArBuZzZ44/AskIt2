@@ -28,6 +28,10 @@ class User < ApplicationRecord
   # функция обратного вызова, выполняется перед сохранением записи в бд
   before_save :set_gravatar_hash, if: :email_changed? # email_changed? - метод RoR
 
+  def guest?
+    false
+  end
+
   def author?(obj)
     obj.user == self
   end
