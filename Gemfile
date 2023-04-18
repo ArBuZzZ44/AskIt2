@@ -22,28 +22,18 @@ gem 'jsbundling-rails'
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem 'cssbundling-rails'
-
 gem 'blueprinter'
-
 gem 'pagy'
-
 gem 'draper'
-
 gem 'valid_email2', '~> 4.0'
-
 gem 'rubyzip', '~> 2'
-
 gem 'caxlsx', '~> 3.1' # позволяет записывать файлы xl
-
 gem 'caxlsx_rails', '~> 0.6' # позволяет правильно работать с представлениями
-
 gem 'rubyXL', '~> 3.4'
-
 gem 'pry-rails'
-
 gem 'activerecord-import', '~> 1.2'
-
 gem 'rails-i18n', '~> 7'
+gem 'pundit', '~> 2.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
