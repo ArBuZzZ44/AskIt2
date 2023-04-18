@@ -19,8 +19,14 @@
 						</div>
 					</section>
 
-				<%= link_to 'Edit', edit_question_answer_path(question, answer), class: 'btn btn-info btn-sm' %>
-				<%= button_to 'Delete', question_answer_path(question, answer), method: :delete, onclick: "return confirm('Are you sure?')", class: 'btn btn-danger btn-sm mt-3' %>
+				<% if policy(answer).edit? %>
+					<%= link_to 'Edit', edit_question_answer_path(question, answer), class: 'btn btn-info btn-sm' %>
+				<% end %>
+
+				<% if policy(answer).destroy? %>
+					<%= button_to 'Delete', question_answer_path(question, answer), method: :delete,
+						 onclick: "return confirm('Are you sure?')", class: 'btn btn-danger btn-sm mt-3' %>
+				<% end %>
 			</div>
 		</div>
 	</div>
