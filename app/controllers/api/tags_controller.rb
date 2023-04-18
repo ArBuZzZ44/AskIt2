@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   class TagsController < ApplicationController
     def index
@@ -6,7 +8,7 @@ module Api
       @tags = Tag.where(tags[:title].matches("%#{params[:term]}%"))
 
       # render выполнит сериализацию и превратит коллекцию тэгов в json
-     render json: TagBlueprint.render(@tags)
+      render json: TagBlueprint.render(@tags)
     end
   end
 end

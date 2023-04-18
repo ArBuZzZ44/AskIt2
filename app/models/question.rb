@@ -14,10 +14,10 @@ class Question < ApplicationRecord
   validates :body, presence: true, length: { minimum: 2 }
 
   # scope - метод класса, который мы можем вызвать(работает как def self.___)
-  scope :all_by_tags, ->(tag_ids) do 
+  scope :all_by_tags, lambda { |tag_ids|
     questions = includes(:user, :question_tags, :tags)
     # делаем связку в sql с таблицей тэгов, где tags это tag_ids но только если tag_ids присутствует
     questions = questions.joins(:tags).where(tags: tag_ids) if tag_ids
     questions.order(created_at: :desc)
-  end
+  }
 end

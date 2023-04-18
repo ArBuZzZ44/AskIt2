@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   before_action :require_authentication, except: %i[show index]
   before_action :set_question!, only: %i[show destroy edit update]
   before_action :authorize_question!
-  # проверяет в экшоне права доступа 
+  # проверяет в экшоне права доступа
   after_action :verify_authorized
 
   def index

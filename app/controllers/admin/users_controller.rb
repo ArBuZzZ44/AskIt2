@@ -19,6 +19,8 @@ module Admin
       end
     end
 
+    def edit; end
+
     def create
       if params[:archive].present?
         UserBulkService.call params[:archive]
@@ -28,12 +30,9 @@ module Admin
       redirect_to admin_users_path
     end
 
-    def edit
-    end
-
     def update
       if @user.update user_params
-        flash[:success] = "User updated"
+        flash[:success] = 'User updated'
         redirect_to admin_users_path
       else
         render :edit
@@ -42,7 +41,7 @@ module Admin
 
     def destroy
       @user.destroy
-      flash[:success] = "User deleted!"
+      flash[:success] = 'User deleted!'
       redirect_to admin_users_path
     end
 
@@ -77,7 +76,7 @@ module Admin
     def user_params
       params.require(:user).permit(
         :email, :name, :password, :password_confirmation, :role
-        ).merge(admin_edit: true)
+      ).merge(admin_edit: true)
     end
 
     def authorize_user!

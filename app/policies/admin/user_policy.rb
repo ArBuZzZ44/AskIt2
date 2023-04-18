@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module Admin
   class UserPolicy < ApplicationPolicy
-    def create? 
+    def create?
       user.admin_role?
     end
 
