@@ -2,7 +2,11 @@
 
 class QuestionsController < ApplicationController
   include QuestionsAnswers
+  before_action :require_authentication, except: %i[show index]
   before_action :set_question!, only: %i[show destroy edit update]
+  before_action :authorize_question!
+  # проверяет в экшоне права доступа 
+  after_action :verify_authorized
 
   def index
     # метод pagy возвращает массив из двух элементов. передаем объект, который хотим разбить по страницам
@@ -55,5 +59,10 @@ class QuestionsController < ApplicationController
 
   def set_question!
     @question = Question.find params[:id]
+  end
+
+  def authorize_question!
+    # метод из pundit
+    authorize(@question || Question)
   end
 end
