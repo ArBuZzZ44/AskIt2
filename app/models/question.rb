@@ -2,6 +2,7 @@
 
 class Question < ApplicationRecord
   include Commentable
+  include Authorship
 
   has_many :answers, dependent: :destroy # если удалить question, то все зависимые ответы тоже долнжы удалиться
   belongs_to :user
