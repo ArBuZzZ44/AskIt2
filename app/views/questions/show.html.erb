@@ -19,11 +19,11 @@
 <%= render 'comments/commentable', commentable: @question, comment: @comment,
 	html_id: 'questionComments' %>
  
-<% if policy(question).edit? %>
+<% if policy(@question).edit? %>
 	<%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-secondary' %> 
 <% end %>
 
-<% if policy(question).destroy? %>
+<% if policy(@question).destroy? %>
 	<%= button_to 'Delete', question_path(@question), method: :delete,
 		 onclick: "return confirm('Are you sure?')", class: 'btn btn-danger mt-3' %>
 <% end %>
