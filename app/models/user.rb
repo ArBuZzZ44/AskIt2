@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  include Recoverable
   enum role: { basic: 0, moderator: 1, admin: 2 }, _suffix: :role
 
   # создает виртуальный атрибут, который нужен для создания поля в форме и проверки пароля
