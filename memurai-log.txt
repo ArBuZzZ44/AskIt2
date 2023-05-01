@@ -60,3 +60,7 @@
 [5276] 02 May 00:36:16.085 * Background saving started by pid 22936
 [22936] 02 May 00:36:16.210 * DB saved on disk
 [5276] 02 May 00:36:16.303 * Background saving terminated with success
+[5276] 02 May 00:41:17.002 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:41:17.016 * Background saving started by pid 23828
+[23828] 02 May 00:41:17.143 * DB saved on disk
+[5276] 02 May 00:41:17.234 * Background saving terminated with success
