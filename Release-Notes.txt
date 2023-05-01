@@ -1,0 +1,87 @@
+Memurai 4 release notes
+================================================================================
+
+--------------------------------------------------------------------------------
+Upgrade urgency levels:
+
+LOW:      No need to upgrade unless there are new features you want to use.
+MODERATE: Program an upgrade of the server, but it's not urgent.
+HIGH:     There is a critical bug that may affect a subset of users. Upgrade!
+CRITICAL: There is a critical bug affecting MOST USERS. Upgrade ASAP.
+SECURITY: There are security fixes in the release.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+Memurai 4.0.1    Released Apr 20 2023
+================================================================================
+
+Upgrade urgency: Security, contains fixes to security issues.
+
+This release introduces the following changes:
+
+* Fix for (CVE-2023-28856): Authenticated users can use the HINCRBYFLOAT command
+  to create an invalid hash field that will crash Memurai on access.
+* Bug fixes.
+
+--------------------------------------------------------------------------------
+Applies only to Memurai Enterprise
+--------------------------------------------------------------------------------
+
+This release contains no changes exclusive to Memurai Enterprise.
+
+--------------------------------------------------------------------------------
+Applies only to Memurai Developer
+--------------------------------------------------------------------------------
+
+This release contains no changes exclusive to Memurai Developer.
+
+================================================================================
+Memurai 4.0.1    --- End of Release Notes ---
+================================================================================
+
+
+================================================================================
+Memurai 4.0.0    Released Mar 29 2023
+================================================================================
+
+Memurai 4.0.0 is on par with Redis 7.0.10. For details, see:
+https://raw.githubusercontent.com/redis/redis/86920532f72ff005fcb146c5a02562f9a10b8140/00-RELEASENOTES
+
+Introduction to the Memurai 4 release
+=====================================
+
+Memurai 4 brings several improvements in key areas, from which we can highlight:
+
+* Memurai uses now a new version 10 format for RDB files. The new format is 
+  incompatible with previous versions.
+* AOF is now stored in multiple files to avoid AOF rewrite overhead.
+  Please note that after converting RDB and AOF files to new formats, it's
+  not possible to restore it back, making the downgrade back to
+  Memurai 3.x impossible.
+* When loading ziplist encoded keys from older RDB format, they are converted
+  on the fly to listpacks.
+* Log files are no longer locked for the entirety of Memurai operation,
+  allowing for easier log rotation.
+* Memurai-cli improvements.
+
+--------------------------------------------------------------------------------
+Applies only to Memurai Enterprise
+--------------------------------------------------------------------------------
+
+This release contains no changes exclusive to Memurai Enterprise.
+
+
+--------------------------------------------------------------------------------
+Applies only to Memurai Developer
+--------------------------------------------------------------------------------
+
+This release contains no changes exclusive to Memurai Developer.
+
+Applies to:
+* Memurai Enterprise
+* Memurai Developer
+
+================================================================================
+Memurai 4.0.0    --- End of Release Notes ---
+================================================================================

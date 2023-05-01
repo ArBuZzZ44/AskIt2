@@ -1,0 +1,62 @@
+[5276] 01 May 23:10:36.474 # --- Memurai is starting ---
+[5276] 01 May 23:10:36.474 # Memurai Developer version=4.0.1, API=7.0.11, instance-name=, pid=5276, just started
+[5276] 01 May 23:10:36.474 # Service-name=Memurai
+[5276] 01 May 23:10:36.475 # Memurai Developer Edition automatically shuts down after 10 days. For more details see: https://www.memurai.com/faq
+[5276] 01 May 23:10:36.475 # Configuration loaded
+[5276] 01 May 23:10:36.476 * monotonic clock: Windows QueryPerformanceCounter
+[5276] 01 May 23:10:36.478 * Running mode=standalone, port=6379.
+[5276] 01 May 23:10:36.484 # Memurai QID = 3052F43099570817;936431C94A137DE6;3052F33099570664;3052EF309956FF98
+[5276] 01 May 23:10:36.485 # Server initialized
+[5276] 01 May 23:10:36.485 * Ready to accept connections
+[5276] 01 May 23:15:37.073 * 100 changes in 300 seconds. Saving...
+[5276] 01 May 23:15:37.085 * Background saving started by pid 33744
+[33744] 01 May 23:15:37.209 * DB saved on disk
+[5276] 01 May 23:15:37.308 * Background saving terminated with success
+[5276] 01 May 23:20:38.106 * 100 changes in 300 seconds. Saving...
+[5276] 01 May 23:20:38.113 * Background saving started by pid 32912
+[32912] 01 May 23:20:38.188 * DB saved on disk
+[5276] 01 May 23:20:38.217 * Background saving terminated with success
+[5276] 01 May 23:25:57.414 * 100 changes in 300 seconds. Saving...
+[5276] 01 May 23:25:57.422 * Background saving started by pid 31324
+[31324] 01 May 23:25:57.577 * DB saved on disk
+[5276] 01 May 23:25:57.632 * Background saving terminated with success
+[5276] 01 May 23:50:43.410 * 100 changes in 300 seconds. Saving...
+[5276] 01 May 23:50:43.416 * Background saving started by pid 5492
+[5492] 01 May 23:50:43.492 * DB saved on disk
+[5276] 01 May 23:50:43.521 * Background saving terminated with success
+[5276] 01 May 23:55:44.001 * 100 changes in 300 seconds. Saving...
+[5276] 01 May 23:55:44.009 * Background saving started by pid 16716
+[16716] 01 May 23:55:44.077 * DB saved on disk
+[5276] 01 May 23:55:44.112 * Background saving terminated with success
+[5276] 02 May 00:01:09.469 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:01:09.479 * Background saving started by pid 19528
+[19528] 02 May 00:01:09.547 * DB saved on disk
+[5276] 02 May 00:01:09.594 * Background saving terminated with success
+[5276] 02 May 00:06:10.091 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:06:10.096 * Background saving started by pid 34536
+[34536] 02 May 00:06:10.175 * DB saved on disk
+[5276] 02 May 00:06:10.198 * Background saving terminated with success
+[5276] 02 May 00:11:11.096 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:11:11.104 * Background saving started by pid 20436
+[20436] 02 May 00:11:11.175 * DB saved on disk
+[5276] 02 May 00:11:11.205 * Background saving terminated with success
+[5276] 02 May 00:16:12.051 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:16:12.059 * Background saving started by pid 4848
+[4848] 02 May 00:16:12.146 * DB saved on disk
+[5276] 02 May 00:16:12.170 * Background saving terminated with success
+[5276] 02 May 00:21:13.110 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:21:13.122 * Background saving started by pid 31060
+[31060] 02 May 00:21:13.189 * DB saved on disk
+[5276] 02 May 00:21:13.223 * Background saving terminated with success
+[5276] 02 May 00:26:14.056 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:26:14.063 * Background saving started by pid 7808
+[7808] 02 May 00:26:14.188 * DB saved on disk
+[5276] 02 May 00:26:14.282 * Background saving terminated with success
+[5276] 02 May 00:31:15.007 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:31:15.019 * Background saving started by pid 20720
+[20720] 02 May 00:31:15.142 * DB saved on disk
+[5276] 02 May 00:31:15.241 * Background saving terminated with success
+[5276] 02 May 00:36:16.077 * 100 changes in 300 seconds. Saving...
+[5276] 02 May 00:36:16.085 * Background saving started by pid 22936
+[22936] 02 May 00:36:16.210 * DB saved on disk
+[5276] 02 May 00:36:16.303 * Background saving terminated with success
