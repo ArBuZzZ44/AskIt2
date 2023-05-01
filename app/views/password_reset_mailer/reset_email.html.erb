@@ -1,8 +1,0 @@
-<p>Someone has requested password reset for your account.</p>
-
-<p>
-	<%= link_to 'Reset my password',
-		edit_password_reset_url(user: {password_reset_token: @user.password_reset_token,
-						email: @user.email}),
-		target: '_blank' %> <!-- таргет нужен чтобы открыть ссылку в новой вкладке -->
-</p>
