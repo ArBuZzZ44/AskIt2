@@ -15,7 +15,10 @@ module Admin
           @pagy, @users = pagy User.order(created_at: :desc)
         end
 
-        format.zip { respond_with_zipped_users }
+        format.zip do 
+          UserBulkExportJob.perform_later current_user
+          flash[:success] t '.success'
+          redirect_to admin_users_path
       end
     end
 
@@ -23,7 +26,7 @@ module Admin
 
     def create
       if params[:archive].present?
-        UserBulkService.call params[:archive]
+        UserBulkImportJob.perfom_later create_blob, current_user # later чтобы задача поставилась в очередь и выполнилась в фоне
         flash[:success] = 'Users imported!'
       end
 
@@ -47,26 +50,14 @@ module Admin
 
     private
 
-    def respond_with_zipped_users
-      # создаем спец объект OutputStream. это фактически архив, который мы будем
-      # пересылать пользователю в ответ на его запрос, при этом на диске он
-      #  храниться не будет. что-то вроде временного архива
-      compressed_filestream = Zip::OutputStream.write_buffer do |zos|
-        User.order(created_at: :desc).each do |user| # файл для каждого пользователя
-          zos.put_next_entry "user_#{user.id}.xlsx"
-          # генерация самого файла
-          zos.print render_to_string( # генерируем строку в память и затем записываем в файл
-            layout: false,
-            handlers: [:axlsx], # обработчик шаблонов
-            formats: [:xlsx], # формат
-            template: 'admin/users/user', # указываем шаблон, который хотим рендерить
-            locals: { user: } # передаем представлению локальную переменную из теущего юзера
-          )
-        end
-      end
-
-      compressed_filestream.rewind # "перематыаем" наш метод
-      send_data compressed_filestream.read, filename: 'users.zip'
+    def create_blob
+      # io - input output.
+      file = File.open params[:archive]
+      result = ActiveStorage::Blob.create_and_upload! io: file,
+                                                      filename: params[:archive].original_filename
+      file.close 
+      # key - некий уникальный идентификатор загруженного файла
+      result.key
     end
 
     def set_user!
