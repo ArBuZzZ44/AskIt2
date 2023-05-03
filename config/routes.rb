@@ -3,7 +3,7 @@
 require 'sidekiq/web'
 
 class AdminConstraint
-  def mathes?(request)
+  def matches?(request)
     # берем либо из сессии, либо из куки
     user_id = request.session[:user_id] || request.cookie_jar.encrypted[:user_id]
 
