@@ -24,8 +24,7 @@
 <% end %>
 
 <% if policy(@question).destroy? %>
-	<%= button_to 'Delete', question_path(@question), method: :delete,
-		 onclick: "return confirm('Are you sure?')", class: 'btn btn-danger mt-3' %>
+	<%= link_to t('global.button.delete'), question_path(@question), data: {turbo_method: :delete, turbo_confirm: t('global.dialog.you_sure')}, class: 'btn btn-danger mt-3' %>
 <% end %>
 	
 
