@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
       flash[:success] = 'Question created!'
       redirect_to questions_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
       flash[:success] = 'Question updated!'
       redirect_to questions_path
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
