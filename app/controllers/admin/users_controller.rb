@@ -17,8 +17,9 @@ module Admin
 
         format.zip do 
           UserBulkExportJob.perform_later current_user
-          flash[:success] t '.success'
+          flash[:success] = t '.success'
           redirect_to admin_users_path
+        end
       end
     end
 
