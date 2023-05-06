@@ -9,8 +9,9 @@ class QuestionsController < ApplicationController
   after_action :verify_authorized
 
   def index
+    @tags = Tag.where(id: params[:tags_ids]) if params[:tag_ids]
     # метод pagy возвращает массив из двух элементов. передаем объект, который хотим разбить по страницам
-    @pagy, @questions = pagy Question.all_by_tags(params[:tag_ids])
+    @pagy, @questions = pagy Question.all_by_tags(@tags)
     @questions = @questions.decorate
   end
 
